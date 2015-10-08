@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'com.parse'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'https://maven.parse.com/repo' }
+    }
+    dependencies {
+        classpath 'com.parse.tools:gradle:1.+'
+    }
+}
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.0"
+
+    defaultConfig {
+        applicationId "swrc.io.docklink"
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    apt 'com.bluelinelabs:logansquare-compiler:1.1.0'
+   // compile fileTree(dir: 'libs', include: 'Parse-*.jar')
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.android.support:recyclerview-v7:23.0.0'
+    compile 'com.android.support:cardview-v7:23.0.0'
+    compile 'com.android.support:design:23.0.0'
+    compile 'com.android.support:support-v4:23.0.0'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
+    compile 'com.commit451:PhotoView:1.2.4'
+    compile 'de.greenrobot:eventbus:2.4.0'
+    compile 'com.github.rayboot.widget:ratioview:1.0.1'
+
+    compile 'com.bluelinelabs:logansquare:1.1.0'
+    compile 'com.github.rayboot.svr:svr:2.1.1'
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
+    compile 'com.facebook.rebound:rebound:0.3.8'
+    compile 'com.parse.bolts:bolts-android:1.+'
+    compile 'com.parse:parse-android:1.10.2'
+
+    testCompile 'org.robolectric:robolectric:3.0'
+    testCompile 'com.squareup.okhttp:mockwebserver:2.5.0'
+}
+
+/* Uncomment if you enable ProGuard and you want to automatically upload symbols on build.
+parse {
+  applicationId "YOUR_APPLICATION_ID"
+  masterKey "YOUR_MASTER_KEY"
+
+  // Make symbol upload automatic. Otherwise, use e.g. ../gradlew parseUploadSymbolsDebug;
+  uploadSymbols true
+}
+*/
