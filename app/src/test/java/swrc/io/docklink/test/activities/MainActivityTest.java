@@ -5,7 +5,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.annotation.Config;
 
+import swrc.io.docklink.BuildConfig;
 import swrc.io.docklink.activities.MainActivity;
 
 import static org.junit.Assert.assertNotNull;
@@ -14,6 +16,7 @@ import static org.junit.Assert.assertNotNull;
  * Created by HB on 2015/10/15.
 */
  @RunWith(RobolectricTestRunner.class)
+ @Config(constants = BuildConfig.class,sdk = 21)
  public class MainActivityTest {
      MainActivity activity;
     @Before
