@@ -1,9 +1,7 @@
 package swrc.io.docklink.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,8 +11,10 @@ import com.parse.ParseAnalytics;
 import com.parse.ParseObject;
 
 import swrc.io.docklink.R;
+import swrc.io.docklink.bases.BaseActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity
+{
     public final static String EXTRA_MESSAGE = "swrc.io.docklink.message";
     @Override
     protected void onCreate(Bundle savedInstanceState) {

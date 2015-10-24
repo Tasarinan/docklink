@@ -19,54 +19,45 @@
 
 package swrc.io.docklink.bases;
 
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 
+import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
 import swrc.io.docklink.events.IEventBus;
 
 /**
- * Created by NetHead on 2015/10/18.
+ * Created by NetHead on 2015/10/24.
  */
-public class BaseActivity extends AppCompatActivity
+public class BaseFragment extends Fragment
 {
     protected String TAG = "";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
+    public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         TAG = ((Object) this).getClass().getSimpleName();
         if (this instanceof IEventBus)
         {
             EventBus.getDefault().register(this);
-
         }
     }
 
     @Override
-    protected void onDestroy()
+    public void onDestroyView()
     {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
         if (this instanceof IEventBus)
         {
             EventBus.getDefault().unregister(this);
         }
-        super.onDestroy();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        switch (item.getItemId())
-        {
-            case android.R.id.home:
-                finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-
-        }
-
     }
 }
