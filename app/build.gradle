@@ -14,9 +14,10 @@ buildscript {
 
 
 android {
+    signingConfigs {
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.0"
-
     defaultConfig {
         applicationId "swrc.io.docklink"
         minSdkVersion 14
@@ -34,9 +35,9 @@ android {
 
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     apt 'com.bluelinelabs:logansquare-compiler:1.1.0'
-   // compile fileTree(dir: 'libs', include: 'Parse-*.jar')
+    // compile fileTree(dir: 'libs', include: 'Parse-*.jar')
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.android.support:recyclerview-v7:23.0.0'
     compile 'com.android.support:cardview-v7:23.0.0'
@@ -49,14 +50,12 @@ dependencies {
     compile 'com.commit451:PhotoView:1.2.4'
     compile 'de.greenrobot:eventbus:2.4.0'
     compile 'com.github.rayboot.widget:ratioview:1.0.1'
-
     compile 'com.bluelinelabs:logansquare:1.1.0'
     compile 'com.github.rayboot.svr:svr:2.1.1'
     compile 'com.squareup.okhttp:okhttp:2.5.0'
     compile 'com.facebook.rebound:rebound:0.3.8'
     compile 'com.parse.bolts:bolts-android:1.+'
     compile 'com.parse:parse-android:1.10.2'
-
     testCompile 'org.robolectric:robolectric:3.0'
     testCompile 'com.squareup.okhttp:mockwebserver:2.5.0'
 }
