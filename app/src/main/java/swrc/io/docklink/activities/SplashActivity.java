@@ -19,6 +19,7 @@
 
 package swrc.io.docklink.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -30,6 +31,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import swrc.io.docklink.R;
 import swrc.io.docklink.bases.BaseActivity;
+import swrc.io.docklink.models.Movie;
 
 public class SplashActivity extends BaseActivity
 {
@@ -43,19 +45,14 @@ public class SplashActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener()
+        if(Movie.getAll()==null||Movie.getAll().size() ==0)
         {
-            @Override
-            public void onClick(View view)
-            {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
+        }
+
+        Intent intent =new Intent(this,MainActivity.class);
+        startActivity(intent);
+
     }
 
 }
