@@ -30,6 +30,7 @@ import com.google.gson.Gson;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import swrc.io.docklink.utils.PinyinUtils;
@@ -88,12 +89,29 @@ public class Movie extends Model implements Serializable
                 return;
             }
             InfoResponse infoResponse = new Gson().fromJson(SDCardUtils.readSDFile(infoFile), InfoResponse.class);
-            PhotoResponse
+            PhotoResponse photoResponse = new Gson().fromJson(SDCardUtils.readSDFile(photoinfoFile), PhotoResponse.class);
+            this.movieId = infoResponse.getId();
+            this.movieCover = infoResponse.getImages().get("large").hashCode() + ".jpg";
+            this.directors = infoResponse.getDirectorsString();
+            this.casts = infoResponse.getCastsString();
+            this.genres = infoResponse.getGenresString();
+            this.year = infoResponse.getYear();
+            this.summary = infoResponse.getSummary();
+            this.photos = photoResponse.getPhotosString();
+            for (String tmptype : infoResponse.genres)
+            {
+                new Type(tmptype).save();
+            }
         }catch (IOException io)
         {
             io.printStackTrace();
         }
 
+    }
+
+    public boolean isSuccessLoadData()
+    {
+        return !TextUtils.isEmpty(this.movieId);
     }
     public static List<Movie> getAll()
     {
@@ -142,7 +160,12 @@ public class Movie extends Model implements Serializable
 
     public String getMovieCover()
     {
-        return movieCover;
+        return getRealFilePath(movieCover);
+    }
+
+    public String getRealFilePath(String fileName)
+    {
+        return getInfoPath() + this.movieName + "/" + fileName;
     }
 
     public void setMovieCover(String movieCover)
@@ -224,8 +247,46 @@ public class Movie extends Model implements Serializable
         return infoPath;
     }
 
+
     public void setInfoPath(String infoPath)
     {
         this.infoPath = infoPath;
+    }
+
+    public static List<Movie> getAllFromType(String typeStr)
+    {
+        return new Select().from(Movie.class).where("genres like ?", "%" + typeStr + "%")
+                .orderBy("moviewName ASC").execute();
+    }
+
+    public static List<Movie> getAllFromSearchKey(String key)
+    {
+        if (TextUtils.isEmpty(key))
+        {
+            return getAll();
+        } else
+        {
+            return new Select().from(Movie.class).where("pinyin like ?", "%" + key + "%")
+                    .orderBy("movieName ASC").execute();
+        }
+
+    }
+
+    public static Movie getItemById(String movieId)
+    {
+        return new Select().from(Movie.class).where("movieId ==?", movieId).executeSingle();
+    }
+
+    public static List<Movie> getAllFromCollect()
+    {
+        List<Collect> collects = Collect.getAll();
+        List<Movie> result = new ArrayList<>(10);
+        for (Collect col : collects)
+        {
+            Movie movie = getItemById(col.getMovieId());
+            if (movie != null)
+                result.add(movie);
+        }
+        return result;
     }
 }
