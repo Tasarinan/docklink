@@ -25,11 +25,15 @@ import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
+import com.google.gson.Gson;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
 import swrc.io.docklink.utils.PinyinUtils;
+import swrc.io.docklink.utils.SDCardUtils;
 
 /**
  * Created by NetHead on 2015/10/25.
@@ -60,6 +64,7 @@ public class Movie extends Model implements Serializable
     @Column(name = "photos")
     String photos;
     String infoPath;
+    private InfoResponse infoResponse;
 
     public Movie()
     {
@@ -76,13 +81,18 @@ public class Movie extends Model implements Serializable
         this.infoPath = getInfoPath();
         String infoFile = infoPath + "/" + movieName + "/" + "info";
         String photoinfoFile = infoPath + "/" + movieName + "/" + "photoinfo";
-       /* try{
+        try
+        {
             if(!new File(infoFile).exists()||!new File(photoinfoFile).exists())
             {
                 return;
             }
-            InfoResponse
-        }*/
+            InfoResponse infoResponse = new Gson().fromJson(SDCardUtils.readSDFile(infoFile), InfoResponse.class);
+            PhotoResponse
+        }catch (IOException io)
+        {
+            io.printStackTrace();
+        }
 
     }
     public static List<Movie> getAll()

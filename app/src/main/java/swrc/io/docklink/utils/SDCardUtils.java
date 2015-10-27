@@ -24,6 +24,11 @@ import android.os.StatFs;
 import android.util.Log;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOError;
+import java.io.IOException;
+import java.net.URLEncoder;
 
 /**
  * Created by NetHead on 2015/10/24.
@@ -146,6 +151,32 @@ public class SDCardUtils
     public static String getRootDirectoryPath()
     {
         return Environment.getRootDirectory().getAbsolutePath();
+    }
+
+    public static String readSDFile(String fileName) throws IOException{
+        File file = new File(fileName);
+        FileInputStream fis = new FileInputStream(file);
+        int length = fis.available();
+        byte[] buffer = new byte[length];
+        fis.read(buffer);
+        String res = URLEncoder.encode(buffer.toString(), "UTF-8");
+        //String res = EncodingUtil.getString(buffer,"UTF-8");
+        fis.close();
+        return res;
+    }
+
+
+    public static void writeSDFile(String fileName, String write_str) throws IOException{
+
+        File file = new File(fileName);
+
+        FileOutputStream fos = new FileOutputStream(file);
+
+        byte [] bytes = write_str.getBytes();
+
+        fos.write(bytes);
+
+        fos.close();
     }
 
 
