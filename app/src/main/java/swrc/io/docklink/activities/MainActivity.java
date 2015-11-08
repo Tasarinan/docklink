@@ -1,11 +1,8 @@
 package swrc.io.docklink.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
 
 import com.parse.ParseAnalytics;
 import com.parse.ParseObject;
@@ -32,13 +29,13 @@ public class MainActivity extends BaseActivity
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-    public void sendMessage(View view){
+   /* public void sendMessage(View view){
         Intent intent = new Intent(this,DisplayMessageActivity.class);
         EditText editText =(EditText)findViewById(R.id.edit_message);
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE,message);
         startActivity(intent);
-    }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

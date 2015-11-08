@@ -15,6 +15,17 @@ buildscript {
 
 android {
     signingConfigs {
+        /*debug {
+            try {
+                storeFile file("docklinkDebug.keystore")
+                storePassword KEYSTORE_PASSWORD
+                keyAlias "thekey"
+                keyPassword KEY_PASSWORD
+            }
+            catch (ex) {
+                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
+            }
+        }*/
     }
     compileSdkVersion 23
     buildToolsVersion "23.0.0"

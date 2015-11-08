@@ -2,16 +2,11 @@ package swrc.io.docklink.test.activities;
 
 import android.content.Intent;
 
-import junit.framework.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
-import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.Shadows;
 import org.robolectric.annotation.Config;
-import org.robolectric.shadows.ShadowActivity;
 
 import swrc.io.docklink.BuildConfig;
 import swrc.io.docklink.R;
@@ -28,7 +23,7 @@ public class MainActivityTest {
     @Test
     public void testMainActivity() {
         MainActivity mainActivity = Robolectric.setupActivity(MainActivity.class);
-        mainActivity.findViewById(R.id.send).performClick();
+        //mainActivity.findViewById(R.id.send).performClick();
 
         Intent expectedIntent = new Intent(mainActivity,DisplayMessageActivity.class);
        // ShadowActivity shadowActivity = Shadows.shadowOf(mainActivity);

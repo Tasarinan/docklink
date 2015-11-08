@@ -25,7 +25,7 @@ import org.junit.Test;
 
 import swrc.io.docklink.utils.PinyinUtils;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by NetHead on 2015/10/25.
