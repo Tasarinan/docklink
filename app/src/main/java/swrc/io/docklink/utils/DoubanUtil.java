@@ -40,7 +40,7 @@ import swrc.io.docklink.models.SearchResponse;
 public class DoubanUtil
 {
 
-   // static final String downloadPath = "/Users/rayboot/Downloads/info";
+    // static final String downloadPath = "/Users/rayboot/Downloads/info";
     static final String INFO_FILE_NAME = "info";
     static final String PHOTO_INFO_FILE_NAME = "photoinfo";
     static final String apikey = "0df993c66c0c636e29ecbb5344252a4a";
@@ -121,13 +121,9 @@ public class DoubanUtil
     static File checkDownloadPath(String movieName)
     {
         String sdcardPath = SDCardUtils.getSDCardPath();
-        File infoPath = new File(sdcardPath, "info");
-        String downloadPath =null;
-        if (infoPath.exists() && infoPath.isDirectory())
-        {
-            downloadPath = infoPath.getAbsolutePath();
-        }
-        File downloadDir = new File(downloadPath, movieName);
+        File testbedPath = new File(sdcardPath, "testbed");
+
+        File downloadDir = new File(testbedPath.getAbsolutePath(), movieName);
         if (!downloadDir.exists())
         {
             downloadDir.mkdirs();

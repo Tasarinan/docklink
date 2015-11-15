@@ -15,7 +15,7 @@
     <fragment
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:name="cn.timeface.tfbox.fragments.MainContentFragment"
+        android:name="swrc.io.docklink.fragments.MainContentFragment"
         android:id="@+id/fragment2"
         android:layout_gravity="center_vertical"
         android:layout_weight="8" />

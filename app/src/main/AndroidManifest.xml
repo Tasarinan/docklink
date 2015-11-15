@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".DocklinkApplication"
@@ -28,9 +28,9 @@
         <activity
             android:name=".activities.SplashActivity"
             android:label="@string/title_activity_splash"
-            android:screenOrientation="landscape"
             android:noHistory="true"
-            android:theme="@style/Theme.AppCompat">
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,19 +40,23 @@
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
             android:name=".activities.DisplayMessageActivity"
             android:label="@string/title_activity_display_message"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
             android:parentActivityName=".activities.MainActivity" >
             <meta-data
                 android:name="android.support.v4.app.TaskStackBuilder.SupportParentable"
                 android:value=".activities.MainActivity" />
         </activity>
-
+        <activity
+            android:name=".activities.SearchActivity"
+            android:label="@string/title_activity_search"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

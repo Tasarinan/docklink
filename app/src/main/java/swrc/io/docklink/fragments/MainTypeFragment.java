@@ -65,7 +65,7 @@ public class MainTypeFragment extends BaseFragment
     {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_type, container, false);
-
+        ButterKnife.bind(this,view);
         mTvTitle.setText("影片");
 
         for (Type typeObj : Type.getAll())

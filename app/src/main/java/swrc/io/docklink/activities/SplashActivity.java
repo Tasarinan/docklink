@@ -55,8 +55,6 @@ public class SplashActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
-        DownTask task = new DownTask(this);
-        task.execute("");
         if(Movie.getAll()==null||Movie.getAll().size() ==0)
         {
             String sdcardPath = SDCardUtils.getSDCardPath();
@@ -65,20 +63,22 @@ public class SplashActivity extends BaseActivity
                 Toast.makeText(this, "NO SD CARD", Toast.LENGTH_SHORT).show();
                 return;
             }
-            File infoPath = new File(sdcardPath, "info");
+            File infoPath = new File(sdcardPath, "testbed");
             if (infoPath.exists() && infoPath.isDirectory())
             {
                 this.infoPath = infoPath.getAbsolutePath();
             } else
             {
-                Toast.makeText(this, "Dont find Info directory", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Dont find testbed directory", Toast.LENGTH_SHORT).show();
+                DownTask task = new DownTask(this);
+                task.execute("");
                 return;
             }
 
-            File[] files = new File(sdcardPath).listFiles();
+            File[] files = infoPath.listFiles();
             for (File file : files)
             {
-                if (!file.isDirectory())
+                if (file.isDirectory())
                 {
                     tvCurFile.setText(file.getAbsolutePath());
                     Movie movie = new Movie(file.getAbsolutePath());

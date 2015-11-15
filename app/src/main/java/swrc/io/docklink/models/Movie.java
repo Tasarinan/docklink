@@ -77,7 +77,7 @@ public class Movie extends Model implements Serializable
     {
         super();
         this.moviePath = moviePath;
-        this.movieName = moviePath.substring(moviePath.lastIndexOf('/') + 1, moviePath.lastIndexOf('.'));
+        this.movieName = moviePath.substring(moviePath.lastIndexOf('/') + 1);
         this.pinyinName = PinyinUtils.getFirstPinyinCharOfChinese(movieName).toUpperCase();
         this.infoPath = getInfoPath();
         String infoFile = infoPath + "/" + movieName + "/" + "info";
@@ -243,7 +243,8 @@ public class Movie extends Model implements Serializable
         {
             return infoPath;
         }
-        this.infoPath = this.moviePath.substring(0, moviePath.lastIndexOf('/')) + "/info";
+       // this.infoPath = this.moviePath.substring(0, moviePath.lastIndexOf('/')) + "/info";
+        this.infoPath = this.moviePath;
         return infoPath;
     }
 
