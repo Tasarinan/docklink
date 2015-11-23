@@ -20,6 +20,7 @@
 package swrc.io.docklink.fragments;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -36,6 +37,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import swrc.io.docklink.R;
+import swrc.io.docklink.activities.DetailActivity;
 import swrc.io.docklink.adapters.MainContentAdapter;
 import swrc.io.docklink.bases.BaseFragment;
 import swrc.io.docklink.events.ChangeTypeEvent;
@@ -82,8 +84,10 @@ public class MainContentFragment extends BaseFragment implements IEventBus
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                Movie movie = (Movie) view.getTag();//TODO Key
-                //TODO
+                Movie movie = (Movie) view.getTag(2000);//TODO Key
+                Intent intent = new Intent(getActivity(), DetailActivity.class);
+                intent.putExtra("movie_info",movie);
+                getActivity().startActivity(intent);
 
             }
         });

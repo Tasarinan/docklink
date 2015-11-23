@@ -62,7 +62,7 @@ public class MainContentAdapter extends BaseListAdapter<Movie>
         Movie item = (Movie) getItem(position);
         Picasso.with(mContext).load(new File(item.getMovieCover())).fit().centerInside().into(viewHolder.mIvImage);
         viewHolder.mTvName.setText(item.getMovieName());
-        convertView.setTag(item);//TODO
+        convertView.setTag(2000,item);//TODO
         return convertView;
     }
 

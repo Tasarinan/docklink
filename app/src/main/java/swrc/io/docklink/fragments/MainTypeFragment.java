@@ -21,6 +21,7 @@ package swrc.io.docklink.fragments;
 
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +37,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
 import swrc.io.docklink.R;
+import swrc.io.docklink.activities.SearchActivity;
 import swrc.io.docklink.adapters.MainTypeAdapter;
 import swrc.io.docklink.bases.BaseFragment;
 import swrc.io.docklink.events.ChangeTypeEvent;
@@ -90,7 +92,9 @@ public class MainTypeFragment extends BaseFragment
                 String item = (String) mAdapter.getItem(position);
                 if (item.equals("搜索"))
                 {
-                    // SearchActivity.open(getActivity()); //TODO
+                    Intent intent = new Intent(getActivity(), SearchActivity.class);
+                    getActivity().startActivity(intent);
+
                 } else if (item.equals("筛选"))
                 {
                     //do something

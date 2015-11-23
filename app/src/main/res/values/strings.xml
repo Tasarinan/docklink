@@ -11,8 +11,7 @@
     <string name="title_activity_display_message">My message</string>
     <string name="title_activity_splash">SplashActivity</string>
 
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_search">SearchActivity</string>
 
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="detail_other_info">标签：%1$s   年代：%2$s</string>
 </resources>

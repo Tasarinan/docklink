@@ -29,7 +29,7 @@
 
     <fragment
         android:id="@+id/fragment3"
-        android:name="swrc.io.docklink.fragments.MainContentFragment"
+        android:name="swrc.io.docklink.fragments.SearchKeyFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3.5"/>

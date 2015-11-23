@@ -173,9 +173,9 @@ public class Movie extends Model implements Serializable
         this.movieCover = movieCover;
     }
 
-    public String getCasts()
+    public String[] getCasts()
     {
-        return casts;
+        return casts.split(",");
     }
 
     public void setCasts(String casts)
@@ -183,9 +183,9 @@ public class Movie extends Model implements Serializable
         this.casts = casts;
     }
 
-    public String getDirectors()
+    public String[] getDirectors()
     {
-        return directors;
+        return directors.split(",");
     }
 
     public void setDirectors(String directors)
@@ -193,9 +193,9 @@ public class Movie extends Model implements Serializable
         this.directors = directors;
     }
 
-    public String getGenres()
+    public String[] getGenres()
     {
-        return genres;
+        return genres.split(",");
     }
 
     public void setGenres(String genres)
